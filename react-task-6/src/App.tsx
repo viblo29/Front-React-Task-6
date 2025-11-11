@@ -48,7 +48,7 @@ const App = () => {
   };
 
   const isError = message.includes("❌") || message.includes("შეავსეთ");
-  
+
   return (
     <div style={{ padding: '20px', display:"flex", flexDirection:"column", alignItems:"center" }}>
       <h1>დაამატე ბარათი შენს საფულეში.</h1>
@@ -81,7 +81,7 @@ const App = () => {
 
         <div style={{ display: 'flex', gap: '15px' }}>
 
-          <div style={{ flex: 2 }}>
+          <div >
             <label>Expiration Date (MM / YY)</label>
             <div style={{ display: 'flex', gap: '5px' }}>
               <input
@@ -103,7 +103,7 @@ const App = () => {
             </div>
           </div>
 
-          <div style={{ flex: 1 }}>
+          <div >
             <label htmlFor="cvc">CVC</label>
             <input
               ref={cvcRef}
@@ -118,7 +118,7 @@ const App = () => {
         </div>
         
         {message && (
-          <div style={isError ? errorStyle : successStyle}>
+          <div className={isError ? 'errorStyle' : 'successStyle'}>
             {message}
           </div>
         )}
