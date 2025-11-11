@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
 
 const App = () => {
-  const cardHolderNameRef = useRef(null);
-  const cardNumberRef = useRef(null);
-  const yearRef = useRef(null);
-  const monthRef = useRef(null);
-  const cvcRef = useRef(null);
+  const cardHolderNameRef = useRef();
+  const cardNumberRef = useRef();
+  const yearRef = useRef();
+  const monthRef = useRef();
+  const cvcRef = useRef();
 
   const [message, setMessage] = useState("");
 
