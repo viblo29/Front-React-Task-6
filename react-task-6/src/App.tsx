@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 
 const App = () => {
   const cardHolderNameRef = useRef(null);
@@ -11,7 +11,7 @@ const App = () => {
 
   const localStorageKey = "cardData";
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault();
     setMessage("");
 
@@ -92,7 +92,7 @@ const App = () => {
             ref={cardNumberRef}
             id="cardNumber"
             type="tel"
-            maxLength="16"
+            maxLength={16}
             placeholder="xxxx xxxx xxxx xxxx"
             defaultValue=""
             style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
@@ -107,7 +107,7 @@ const App = () => {
               <input
                 ref={monthRef}
                 type="tel"
-                maxLength="2"
+                maxLength={2}
                 placeholder="MM"
                 defaultValue=""
                 style={{ width: '50%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
@@ -115,7 +115,7 @@ const App = () => {
               <input
                 ref={yearRef}
                 type="tel"
-                maxLength="2"
+                maxLength={2}
                 placeholder="YY"
                 defaultValue=""
                 style={{ width: '50%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
@@ -129,7 +129,7 @@ const App = () => {
               ref={cvcRef}
               id="cvc"
               type="tel"
-              maxLength="3"
+              maxLength={3}
               placeholder="123"
               defaultValue=""
               style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
