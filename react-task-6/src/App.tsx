@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 const App = () => {
   const cardHolderNameRef = useRef(null);
@@ -9,30 +9,10 @@ const App = () => {
 
   const [message, setMessage] = useState("");
 
-  const localStorageKey = "paymentCardData";
+  const localStorageKey = "cardData";
 
-  useEffect(() => {
-    const storedData = localStorage.getItem(localStorageKey);
-
-    if (storedData) {
-      try {
-        const data = JSON.parse(storedData);
-        if (cardHolderNameRef.current)
-          cardHolderNameRef.current.value = data.name || "";
-        if (cardNumberRef.current)
-          cardNumberRef.current.value = data.number || "";
-        if (monthRef.current) monthRef.current.value = data.month || "";
-        if (yearRef.current) yearRef.current.value = data.year || "";
-        if (cvcRef.current) cvcRef.current.value = data.cvc || "";
-        console.log("Data loaded from localStorage:", data);
-      } catch (e) {
-        console.error("Error parsing stored data:", e);
-      }
-    }
-  }, []);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setMessage("");
 
     const cardData = {
@@ -58,8 +38,7 @@ const App = () => {
       localStorage.setItem(localStorageKey, JSON.stringify(cardData));
 
       console.log(
-        "Card data saved to localStorage without re-render:",
-        cardData
+        "Card data saved to localStorage without re-render",
       );
       setMessage("✅ ბარათის მონაცემები წარმატებით შეინახა!");
     } catch (error) {
@@ -91,8 +70,8 @@ const App = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>გადახდის ბარათი</h1>
+    <div style={{ padding: '20px', display:"flex", flexDirection:"column", alignItems:"center" }}>
+      <h1>დაამატე ბარათი შენს საფულეში.</h1>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', maxWidth: '400px', gap: '15px' }}>
         <div>
@@ -101,7 +80,7 @@ const App = () => {
             ref={cardHolderNameRef}
             id="cardName"
             type="text"
-            placeholder="მაგ. George Smith"
+            placeholder="მაგ. ნიკა თავართქილაძე"
             defaultValue=""
             style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
           />
@@ -123,7 +102,7 @@ const App = () => {
         <div style={{ display: 'flex', gap: '15px' }}>
 
           <div style={{ flex: 2 }}>
-            <label>ვარგისიანობის ვადა (MM / YY)</label>
+            <label>Expiration Date (MM / YY)</label>
             <div style={{ display: 'flex', gap: '5px' }}>
               <input
                 ref={monthRef}
