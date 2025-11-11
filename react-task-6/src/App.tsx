@@ -23,6 +23,14 @@ const App = () => {
       cvc: (cvcRef.current?.value ?? '').trim(),
     };
 
+    const requiredRefs = [
+      cardHolderNameRef,
+      cardNumberRef,
+      monthRef,
+      yearRef,
+      cvcRef,
+    ];
+
     if (
       !cardData.name ||
       !cardData.number ||
@@ -30,6 +38,8 @@ const App = () => {
       !cardData.year ||
       !cardData.cvc
     ) {
+            const firstEmptyField = requiredRefs.find(ref => !ref.current?.value.trim());
+      firstEmptyField?.current?.focus();
       setMessage("შეავსეთ ყველაფერი");
       return;
     }
@@ -45,6 +55,7 @@ const App = () => {
       console.error("Error saving to localStorage:", error);
       setMessage("❌ მონაცემების შენახვისას მოხდა შეცდომა.");
     }
+
   };
 
   const isError = message.includes("❌") || message.includes("შეავსეთ");
