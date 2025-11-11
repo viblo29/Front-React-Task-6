@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
 
 const App = () => {
-  const cardHolderNameRef = useRef<HTMLInputElement>(null);
-  const cardNumberRef = useRef<HTMLInputElement>(null);
-  const yearRef = useRef<HTMLInputElement>(null);
-  const monthRef = useRef<HTMLInputElement>(null);
-  const cvcRef = useRef<HTMLInputElement>(null);
+  const cardHolderNameRef = useRef<HTMLInputElement | null>(null);
+  const cardNumberRef = useRef<HTMLInputElement | null>(null);
+  const yearRef = useRef<HTMLInputElement | null>(null);
+  const monthRef = useRef<HTMLInputElement | null>(null);
+  const cvcRef = useRef<HTMLInputElement | null>(null);
 
   const [message, setMessage] = useState("");
 
@@ -16,11 +16,11 @@ const App = () => {
     setMessage("");
 
     const cardData = {
-      name: cardHolderNameRef.current.value.trim(),
-      number: cardNumberRef.current.value.trim(),
-      month: monthRef.current.value.trim(),
-      year: yearRef.current.value.trim(),
-      cvc: cvcRef.current.value.trim(),
+      name: (cardHolderNameRef.current?.value ?? '').trim(),
+      number: (cardNumberRef.current?.value ?? '').trim(),
+      month: (monthRef.current?.value ?? '').trim(),
+      year: (yearRef.current?.value ?? '').trim(),
+      cvc: (cvcRef.current?.value ?? '').trim(),
     };
 
     if (
