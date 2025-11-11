@@ -68,3 +68,23 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.successStyle {
+  color: green;
+  font-weight: bold;
+  border: 1px solid green;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.errorStyle {
+  color: red;
+  font-weight: bold;
+  border: 1px solid red;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+}

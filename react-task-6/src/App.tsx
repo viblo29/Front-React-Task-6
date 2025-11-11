@@ -1,11 +1,11 @@
 import { useState, useRef } from "react";
 
 const App = () => {
-  const cardHolderNameRef = useRef("");
-  const cardNumberRef = useRef(0);
-  const yearRef = useRef(0);
-  const monthRef = useRef(0);
-  const cvcRef = useRef(0);
+  const cardHolderNameRef = useRef<HTMLInputElement>(null);
+  const cardNumberRef = useRef<HTMLInputElement>(null);
+  const yearRef = useRef<HTMLInputElement>(null);
+  const monthRef = useRef<HTMLInputElement>(null);
+  const cvcRef = useRef<HTMLInputElement>(null);
 
   const [message, setMessage] = useState("");
 
@@ -49,26 +49,6 @@ const App = () => {
 
   const isError = message.includes("❌") || message.includes("შეავსეთ");
   
-  const errorStyle = {
-    color: 'red',
-    fontWeight: 'bold',
-    border: '1px solid red',
-    padding: '8px',
-    borderRadius: '4px',
-    marginTop: '10px',
-    textAlign: 'center'
-  };
-
-  const successStyle = {
-    color: 'green',
-    fontWeight: 'bold',
-    border: '1px solid green',
-    padding: '8px',
-    borderRadius: '4px',
-    marginTop: '10px',
-    textAlign: 'center'
-  };
-
   return (
     <div style={{ padding: '20px', display:"flex", flexDirection:"column", alignItems:"center" }}>
       <h1>დაამატე ბარათი შენს საფულეში.</h1>
